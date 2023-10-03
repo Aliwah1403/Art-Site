@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Art Idea Generator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+
+        #idea-container {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Art Idea Generator</h1>
+    <p>Select the category and the number of days to generate ideas:</p>
+
+    <label for="category">Category:</label>
+    <select id="category">
+        <option value="sketch">Sketch</option>
+        <option value="painting">Painting</option>
+        <option value="3d">3D Design</option>
+        <option value="illustration">Illustration</option>
+        <option value="animation">Animation</option>
+    </select>
+
+    <label for="days">Number of Days:</label>
+    <input type="number" id="days" min="1" value="1">
+
+    <button onclick="generateIdeas()">Generate Ideas</button>
+
+    <div id="idea-container"></div>
+
+    <script>
+        function generateIdeas() {
+            const category = document.getElementById('category').value;
+            const days = parseInt(document.getElementById('days').value);
+
+            const ideas = [
+                'Draw a portrait of someone you admire.',
+                'Create a 3D model of an imaginary creature.',
+                'Illustrate a scene from your favorite book.',
+                'Paint a vibrant landscape.',
+                'Animate a dancing character.',
+                'Sketch a still life of everyday objects.',
+                'Design a futuristic cityscape.',
+                'Illustrate a magical forest.',
+                'Create an abstract painting inspired by music.'
+            ];
+
+            const ideaContainer = document.getElementById('idea-container');
+            ideaContainer.innerHTML = '';
+
+            for (let i = 1; i <= days; i++) {
+                const randomIndex = Math.floor(Math.random() * ideas.length);
+                const idea = ideas[randomIndex];
+                const ideaElement = document.createElement('p');
+                ideaElement.textContent = `Day ${i}: ${idea}`;
+                ideaContainer.appendChild(ideaElement);
+            }
+        }
+    </script>
+</body>
+
+</html>
